@@ -1,4 +1,5 @@
 var http = require('http');
+var static = require('node-static');
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -11,9 +12,18 @@ var users = require('./routes/users');
 
 var app = express();
 
-/*var server = http.createServer(app);
+var server = http.createServer(app);
+server.listen(process.env.PORT || 5000);
 var io = require('socket.io').listen(server);
-server.listen(80);*/
+
+io.on('connection', function(socket){
+ console.log('a user connected');
+
+ socket.on('chat message', function(msg){
+ console.log('message: ' + msg);
+ io.emit('chat message', msg);
+ });
+ });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -61,14 +71,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
-/*io.on('connection', function(socket){
-  console.log('a user connected');
 
-  socket.on('chat message', function(msg){
-    console.log('message: ' + msg);
-    io.emit('chat message', msg);
-  });
-});*/
 
 
 module.exports = app;
