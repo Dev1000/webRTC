@@ -1,5 +1,7 @@
 <h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<p>Welcome to {{title}} and WebRTC</p>
+
+<video autoplay></video>
 
 <ul id="messages"></ul>
 <form action="">
@@ -8,6 +10,7 @@
 
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="/javascripts/main.js"></script>
 <script>
   var socket = io();
   $('form').submit(function(){
