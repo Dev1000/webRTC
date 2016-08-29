@@ -11,9 +11,9 @@ var users = require('./routes/users');
 
 var app = express();
 
-var server = http.createServer(app);
+/*var server = http.createServer(app);
 var io = require('socket.io').listen(server);
-server.listen(80);
+server.listen(80);*/
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -61,14 +61,14 @@ app.use(function(err, req, res, next) {
   });
 });
 
-io.on('connection', function(socket){
+/*io.on('connection', function(socket){
   console.log('a user connected');
 
   socket.on('chat message', function(msg){
     console.log('message: ' + msg);
     io.emit('chat message', msg);
   });
-});
+});*/
 
 
 module.exports = app;
